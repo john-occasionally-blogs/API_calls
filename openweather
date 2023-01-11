@@ -1,0 +1,16 @@
+import requests
+
+# Prompt the user for their zip code
+zip_code = input("Enter your zip code: ")
+
+# Make the API call to the weather service
+api_key = "YOUR_API_KEY"
+url = f"https://api.openweathermap.org/data/2.5/weather?zip={zip_code}&units=imperial&appid={api_key}"
+response = requests.get(url)
+
+# Print the high and low temperature
+data = response.json()
+temp_min = data["main"]["temp_min"]
+temp_max = data["main"]["temp_max"]
+print(f"Today's high: {temp_max}°F")
+print(f"Today's low: {temp_min}°F")
